@@ -63,7 +63,7 @@ class Em.Auth.RememberableAuthModule
     self = this
     Em.Route.reopen
       beforeModel: ->
-        ret = super.apply(this, arguments)
+        ret = super.apply this, arguments
         return ret unless self.config.autoRecall && !self.auth.signedIn
         if typeof ret.then == 'function'
           ret.then -> self.recall()
